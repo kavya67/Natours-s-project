@@ -54,6 +54,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .header-primary {
@@ -62,6 +63,7 @@ body {
 
     /*to avoid animation jerks*/
     backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .header-primary-main {
@@ -117,4 +119,17 @@ body {
         opacity: 1;
         transform: translate(0); /* comes back to the original position */
     }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
 }
