@@ -121,6 +121,18 @@ body {
     }
 }
 
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* moves to 100px left from original position */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /* comes back to the original position */
+    }
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -167,4 +179,9 @@ body {
 .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInButton .5s ease-out 0.75s;
+    animation-fill-mode: backwards;
 }
