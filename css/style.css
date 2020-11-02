@@ -10,16 +10,21 @@ Dark green: #28b485
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;  /* converting px to rem required px is 10px => 10/16*100 = 62.5%*/
 }
 
 body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header{
@@ -41,12 +46,12 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -54,23 +59,135 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .header-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /*to avoid animation jerks*/
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
 }
 
 .header-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
+
+    /*animation propert*/
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
 }
 
 .header-primary-sub {
     display:  block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
+
+    /*animation properties in single line*/
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem); /* moves to 100px left from original position */
+    }
+
+    80% {
+        transform: translateX(1rem); /*moves to 10px right from original position*/
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /* comes back to the original position */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem); /* moves to 100px left from original position */
+    }
+
+    80% {
+        transform: translateX(-1rem); /*moves to 10px right from original position*/
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /* comes back to the original position */
+    }
+}
+
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem); /* moves to 100px left from original position */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /* comes back to the original position */
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative; /* btn after psuedo is made absolute*/
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after { 
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute; /* need to put psuedo element behind btn class i.e make it child of btn class*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; /* transition to give animation for opcatity*/
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInButton .5s ease-out 0.75s;
+    animation-fill-mode: backwards;
 }
