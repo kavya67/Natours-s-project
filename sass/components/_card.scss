@@ -14,6 +14,7 @@
     left: 0;
     width: 100%;
     backface-visibility: hidden;
+    overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &--front {
@@ -65,6 +66,8 @@
     background-blend-mode: screen; //can be an alternative to using rgba in linear gradient of background image
     -webkit-background-clip: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 
     &--1 {
       background-image: linear-gradient(
