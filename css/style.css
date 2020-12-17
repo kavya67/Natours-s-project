@@ -336,7 +336,8 @@ body {
     position: relative; }
   .story__img {
     height: 100%;
-    transform: translateX(-3rem); }
+    transform: translateX(-3rem) scale(1.4);
+    transition: all .5s; }
   .story__text {
     transform: skewX(12deg); }
   .story__caption {
@@ -354,6 +355,11 @@ body {
   .story:hover .story__caption {
     transform: translate(-50%, -50%);
     opacity: 1; }
+  .story:hover .story__img {
+    transform: translateX(-3rem) scale(1);
+    filter: blur(3px) brightness(80%); }
+  .story:not(:last-child) {
+    margin-bottom: 8rem; }
 
 .header {
   height: 95vh;
